@@ -14,9 +14,6 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
-os.system("taskkill /f /im chrome.exe")
-
-
 def get_page_count(_driver, url):
 	http_GET(_driver, f"{url}?page=99999")
 	_count = "1"

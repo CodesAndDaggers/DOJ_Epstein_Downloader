@@ -49,7 +49,10 @@ class DatasetDownloader:
 			"plugins.always_open_pdf_externally": True
 		})
 		self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-		self.driver.minimize_window()
+		try:
+			self.driver.minimize_window()
+		except:
+			pass
 		self.download_dataset_pdfs(dataset)
 
 	def get_dataset_page_count(self, dataset):
@@ -70,7 +73,10 @@ class DatasetDownloader:
 		})
 		download_options.add_argument("--window-position=-5000,0") # out of bounds
 		download_driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=download_options)
-		download_driver.minimize_window()
+		try:
+			download_driver.minimize_window()
+		except:
+			pass
 		download_complete = False
 		max_tries = 10
 		while max_tries > 0:
